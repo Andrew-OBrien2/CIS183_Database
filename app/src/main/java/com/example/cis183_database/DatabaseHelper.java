@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         //super is sued to call the functionality of the base class SQLiteOpenHelper and
         //then executes the extended (DatabaseHelper)
 
-        super(c,database_name,null,1);
+        super(c,database_name,null,2);
     }
     @Override
     public void onCreate(SQLiteDatabase db)
@@ -72,12 +72,12 @@ public class DatabaseHelper extends SQLiteOpenHelper
 
             //insert dummy data into the users table if there is nothing in the table
             //we do not want to do this more than once so it needs to be surrounded with an if statement.
-            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Zackary', 'Moore', 'zmoore@monroeccc.edu');");
-            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Shannon', 'Thomas', 'sthomas@umich.edu');");
-            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Gabriel', 'Smith', 'BigG@gmail.com');");
-            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Harrison', 'Moore', 'hsm@yahoo.com');");
-            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Tito', 'Williams', 'Tito_Boy@company.gov');");
-            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Willow', 'Branch', 'Willow_Branc@hotmail.com');");
+            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Andrew', 'OBrien', 'aobrien2@monroeccc.edu');");
+            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Thor', 'Odinson', 'gothunder@gmail.edu');");
+            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Steve', 'Brown', 'steevB@gmail.com');");
+            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Jimmy', 'Smith', 'the_jimbo26@yahoo.com');");
+            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Catherine', 'LaRoy', 'catgirl35@company.gov');");
+            db.execSQL("INSERT INTO " + users_table_name + "(fname, lname, email) VALUES ('Megan', 'Kay', 'mkay_ok@hotmail.com');");
 
             //close the database
             db.close();
