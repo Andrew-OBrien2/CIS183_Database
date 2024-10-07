@@ -207,4 +207,38 @@ public class DatabaseHelper extends SQLiteOpenHelper
             return false;
         }
     }
+
+    public void getAllUserDataGivenId(int userId)
+    {
+        User loggedInUser = null;
+        if (userIdExists(userId))
+        {
+            //I will retrieve all of this information from the user table given the ID passed to me.
+            loggedInUser = new User();
+
+            //query to get the information
+            String selectQuery = "SELECT * FROM " + users_table_name + " WHERE userId = '" + userId + "';";
+
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            Cursor cursor = db.rawQuery(selectQuery, null);
+
+            if (cursor != null)
+            {
+                cursor.moveToFirst();
+
+                loggedInUser.setId(cursor.getInt(0));
+                loggedInUser.setFname(cursor.getString(1));
+                loggedInUser.setLname(cursor.getString(2));
+                loggedInUser.setEmail(cursor.getString(3));
+
+                SessionData.setLoggedInUser(loggedInUser);
+            }
+        }
+        else
+        {
+            SessionData.setLoggedInUser(null);
+            Log.d("Error", "Error");
+        }
+    }
 }
