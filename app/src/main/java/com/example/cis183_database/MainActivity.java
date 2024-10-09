@@ -1,5 +1,6 @@
 package com.example.cis183_database;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity
     EditText et_j_main_userId;
     Button btn_j_main_login;
     TextView tv_j_userFname;
+    Intent welcomeScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity
         checkAllTableCounts();
 
         loginButtonClickListener();
+
+        welcomeScreen = new Intent(MainActivity.this, welcome_screen.class);
     }
     //This is just used for testing.  I want to make sure that I can add data to my database.
     private void checkAllTableCounts()
@@ -66,6 +70,10 @@ public class MainActivity extends AppCompatActivity
                 if (SessionData.getLoggedInUser() != null)
                 {
                     tv_j_userFname.setText(SessionData.getLoggedInUser().getFname());
+                    //send ID over to the welcome screen
+                    welcomeScreen.putExtra("userID", enteredId);
+                    //open the welcome screen
+                    startActivity(welcomeScreen);
                 }
                 else
                 {

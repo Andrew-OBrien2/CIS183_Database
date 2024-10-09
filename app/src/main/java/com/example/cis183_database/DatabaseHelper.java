@@ -241,4 +241,65 @@ public class DatabaseHelper extends SQLiteOpenHelper
             Log.d("Error", "Error");
         }
     }
+
+    public int getNumberOfPosts(int userId)
+    {
+        // Get database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Create query to count posts for a given user ID
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM Posts WHERE userId = " + userId, null);
+
+        // Move to the first result
+        cursor.moveToFirst();
+
+        // Get the count
+        int count = cursor.getInt(0);
+
+        db.close();
+
+        return count;
+    }
+
+    public String getLNameForUser(int userId)
+    {
+
+
+        String userLName = "";
+        //if the userId was found in the table then this userId has a name associated with it
+        //get the name
+        if(userIdExists(userId))
+        {
+            //Sql statement to get the lname from a given userId
+            String selectStatement = "SELECT lname FROM " + users_table_name + " WHERE userId = '" + userId + "';";
+
+            //get a readable database
+            SQLiteDatabase db = this.getReadableDatabase();
+            //run the query
+            Cursor cursor = db.rawQuery(selectStatement, null);
+
+            if(cursor != null)
+            {
+                //cursor could return more than one value depending on the query that we run
+                //in this case it should only return one value
+                //move the cursor to the first returned value
+                cursor.moveToFirst();
+                //the parameter passed to cursor will be the column where the data is located
+                //this query will only return one value so we set this to 0
+                userLName = cursor.getString(0).toString();
+            }
+
+            db.close();
+        }
+        //If the userId was not found in the table then there is no name associated with it
+        //return an error message.
+        else
+        {
+            userLName = "ERROR: user id not found";
+            Log.d("ERROR: " , "no first name found for user with id: " + userId);
+        }
+
+
+        return userLName;
+    }
 }
