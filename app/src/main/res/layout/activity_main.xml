@@ -11,8 +11,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="95dp"
         android:text="Blog Post App"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -25,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="29dp"
-        android:layout_marginBottom="42dp"
         android:text="Enter your user id"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/et_v_main_userId"
@@ -35,8 +34,8 @@
     <EditText
         android:id="@+id/et_v_main_userId"
         android:layout_width="86dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="23dp"
         android:ems="10"
         android:inputType="text"
         android:textSize="20sp"
@@ -49,11 +48,12 @@
         android:id="@+id/btn_v_main_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="342dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="9dp"
         android:text="Login"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/et_v_main_userId"
+        app:layout_constraintBottom_toTopOf="@+id/btn_v_main_register"
+        app:layout_constraintStart_toStartOf="@+id/btn_v_main_register"
         app:layout_constraintTop_toBottomOf="@+id/tv_v_main_userFname" />
 
     <TextView
@@ -61,10 +61,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="7dp"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_v_main_login"
         app:layout_constraintStart_toStartOf="@+id/btn_v_main_login"
         app:layout_constraintTop_toBottomOf="@+id/et_v_main_userId" />
+
+    <Button
+        android:id="@+id/btn_v_main_register"
+        android:layout_width="183dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="287dp"
+        android:text="Register"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_v_main_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

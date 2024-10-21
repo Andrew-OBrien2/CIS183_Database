@@ -299,7 +299,21 @@ public class DatabaseHelper extends SQLiteOpenHelper
             Log.d("ERROR: " , "no first name found for user with id: " + userId);
         }
 
-
         return userLName;
+    }
+    public void addUserToDB(User u)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //we need our sql insert statement to look like this
+        // INSERT INTO users (fname, lname, email) VALUES ('Bobby','Smith','Bsmith@bsmith.org');
+
+        db.execSQL("INSERT INTO " + users_table_name + " (fname, lname, email) VALUES ('" + u.getFname() + "','" + u.getLname() + "','" + u.getEmail() + "');");
+        db.close();
+    }
+
+    private void getMostRecentPostGivenId(int id)
+    {
+        //BOOOOOOOOOOOOOOOOOOOOOOOKMARK HEEEEEEEEEEEEEEEEREEEEEEEEEEEEEEEEEEEE!!!!!!!!!!!!!!!!!!!!
+        Post rPost = null;
     }
 }

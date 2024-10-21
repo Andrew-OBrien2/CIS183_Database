@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     Button btn_j_main_login;
     TextView tv_j_userFname;
     Intent welcomeScreen;
+    Button btn_j_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         et_j_main_userId = findViewById(R.id.et_v_main_userId);
         btn_j_main_login = findViewById(R.id.btn_v_main_login);
         tv_j_userFname   = findViewById(R.id.tv_v_main_userFname);
+        btn_j_register   = findViewById(R.id.btn_v_main_register);
 
         //make a new instance of the dbHelper.
         dbHelper = new DatabaseHelper(this);
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity
 
         loginButtonClickListener();
 
+        registerButtonClickListener();
+
         welcomeScreen = new Intent(MainActivity.this, welcome_screen.class);
     }
     //This is just used for testing.  I want to make sure that I can add data to my database.
@@ -54,6 +58,17 @@ public class MainActivity extends AppCompatActivity
         Log.d("POSTS COUNT:  ", dbHelper.countRecordsFromTable(dbHelper.getPostsDbName()) + "");
     }
 
+    private void registerButtonClickListener()
+    {
+        btn_j_register.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(MainActivity.this, Register.class));
+            }
+        });
+    }
     private void loginButtonClickListener()
     {
         btn_j_main_login.setOnClickListener(new View.OnClickListener() {
